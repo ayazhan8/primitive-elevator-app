@@ -1,0 +1,2 @@
+export const MOVE_ELEVATOR = 'MOVE_ELEVATOR';
+export const REQUEST_ELEVATOR = 'REQUEST_ELEVATOR';
