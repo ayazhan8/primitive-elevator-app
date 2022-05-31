@@ -4,24 +4,20 @@ import '../App.css';
 export const Elevator = ({ id, currentFloor }) => {
   const [isDoorOpen, setIsDoorOpen] = useState(true);
 
-  const handleElevator = (currentFloor) => {
-    const elevator = document.getElementById(id);
-
-    const floorHeight = parseInt(
-      getComputedStyle(document.querySelector('.floor')).height,
-      10
-    );
-
-    elevator.style.top = (currentFloor - 1) * floorHeight + 'px';
-  };
-
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setIsDoorOpen(true);
     }, 500);
 
     const timer2 = setTimeout(() => {
-      handleElevator(currentFloor);
+      const elevator = document.getElementById(id);
+
+      const floorHeight = parseInt(
+        getComputedStyle(document.querySelector('.floor')).height,
+        10
+      );
+
+      elevator.style.top = (currentFloor - 1) * floorHeight + 'px';
     }, 1500);
 
     const timer3 = setTimeout(() => {
@@ -33,7 +29,7 @@ export const Elevator = ({ id, currentFloor }) => {
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
-  }, [currentFloor]);
+  }, [currentFloor, id]);
 
   return (
     <div className={`elevator`} id={id}>
